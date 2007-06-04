@@ -1,0 +1,5 @@
+READING IN BINARY FORMATS
+=========================
+
+The dataStruct module contains a small but useful class which can be used to
+quickly parse binary formats from a formal description.

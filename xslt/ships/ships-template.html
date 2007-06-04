@@ -1,0 +1,24 @@
+<html xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+      xsl:version="1.0">
+  <head>
+    <title>Ships of the 
+           <xsl:value-of select="/shiptypes/@name" /></title>
+  </head>
+  <body>
+    <table border="1">
+      <tr><th>Ship</th>
+          <th>Class</th>
+          <th>Registration</th>
+          <th>Captain</th>
+        </tr>
+      <xsl:for-each select="/shiptypes/ship">
+        <xsl:sort select="registry-code" />
+        <tr><td><xsl:value-of select="@name" /></td>
+            <td><xsl:value-of select="class" /></td>
+            <td><xsl:value-of select="registry-code" /></td>
+            <td><xsl:value-of select="captain" /></td>
+          </tr>
+      </xsl:for-each>
+    </table>
+  </body>
+</html>

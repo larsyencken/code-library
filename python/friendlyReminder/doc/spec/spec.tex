@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{fullpage}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\newcommand{\projname}{{\tt FriendlyReminder}}
+
+\title{{\tt FriendlyReminder}: \\Requirements specification}
+\author{Lars Yencken {\tt <lars.yencken@gmail.com>}}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{Introduction}
+\subsection{Aim}
+
+With today's busy lifestyles, many of us are so focused on our work that we neglect to maintain contact with close friends and family. For some this is a conscious lifestyle decision, but for others this state of affairs is not desirable. \projname{} aims to be a lifestyle aid which periodically sends reminders for us to keep in touch with those we care about, and also reminds us about important dates such as birthdays which come up.
+
+\section{Requirements}
+
+\subsection{Account management}
+To maintain privacy and personal details, \projname{} must:
+\begin{enumerate}
+	\item Allow individual user accounts, authenticated by email and password.
+	\item Allow password-less re-visiting of the site for use on private computers.
+	\item Publicly commit to the following privacy policy. \projname{} will:
+	\begin{enumerate}
+		\item Take reasonable steps to ensure the privacy of user data.
+		\item Never disclose email addresses or other private data to a third party unless required by law.
+		\item Avoid sending unsolicited emails to the user, unless it concerns changes to their account.
+		\item Disclose any known breaches of privacy if they happen.
+	\end{enumerate}
+\end{enumerate}
+
+\subsection{Friend management}
+In order to be able to provide timely reminders for individual friends, \projname{} must, on a per-user basis:
+\begin{enumerate}
+	\item Allow the association of one or more friends, by name.
+	\item For each friend, maintain:
+	\begin{enumerate}
+		\item A history of when the friend was last interacted with.
+		\item Custom alert dates for that friend, for example, a birthday.
+		\item How often you would minimally like to be in contact with your friend.
+	\end{enumerate}
+\end{enumerate}
+
+\subsection{Alerts}
+
+\begin{enumerate}
+\item 
+\end{enumerate}
+
+\end{document}

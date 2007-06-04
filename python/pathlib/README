@@ -1,0 +1,14 @@
+=========================
+HOW TO INSTALL PATHLIB
+=========================
+
+To install pathlib, run
+
+	python setup.py install
+
+as root, or alternatively
+
+	python setup.py bdist_rpm
+
+to generate an rpm package. The rpm can be converted to a debian package using
+alien -d.

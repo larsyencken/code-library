@@ -1,0 +1,89 @@
+# -*- coding: utf-8 -*-
+#----------------------------------------------------------------------------#
+# SConstruct
+# Lars Yencken <lars.yencken@gmail.com>
+# vim: ts=4 sw=4 sts=4 et tw=78:
+# Tue Feb  6 11:43:40 2007
+#
+#----------------------------------------------------------------------------#
+
+""" Build instructions for imgSeekLib.
+"""
+
+#----------------------------------------------------------------------------#
+
+import os, sys, re
+from distutils import sysconfig
+
+#----------------------------------------------------------------------------#
+
+# Default include path for python, version inspecific.
+pythonVersion = sysconfig.get_config_var('VERSION')
+
+#----------------------------------------------------------------------------#
+
+def checkLibraries(env):
+    """ Check whether the correct libraries exist, and thus whether building
+        is possible.
+    """
+    # Detect OS X python installation, and attempt to correct for it.
+    if os.uname()[0] == 'Darwin':
+        env.Replace(SHLINKFLAGS='$LINKFLAGS -bundle -flat_namespace -undefined suppress')
+        env.Replace(SHLIBSUFFIX='.so')
+
+    # Detect the presence of necessary dependencies.
+    conf = Configure(env)
+
+    if not conf.CheckLibWithHeader('m', 'math.h', 'c'):
+        print "Can't find standard math libraries."
+        Exit(1)
+
+    if not conf.CheckLibWithHeader('qt-mt', 'qt.h', 'c++'):
+        print "Can't find qt3-mt library."
+        Exit(1)
+
+    env = conf.Finish()
+
+    return env
+
+#----------------------------------------------------------------------------#
+# CONFIGURATION
+#----------------------------------------------------------------------------#
+
+# Set up the compilation environment.
+pythonVersion = sysconfig.get_config_var('VERSION')
+env = Environment(
+        CPPPATH=sysconfig.get_python_inc(),
+        LIBPATH=sysconfig.get_config_var('LIBPL'),
+        SHLIBPREFIX='',
+        LIBS=['boost_python', 'python%s' % pythonVersion],
+    )
+
+environmentVars = (
+        'CPATH',
+        'C_INCLUDE_PATH',
+        'LD_LIBRARY_PATH',
+    )
+
+envDict = env['ENV']
+for var in environmentVars:
+    if var in os.environ:
+        envDict[var] = os.environ[var]
+
+# Choose between debugging or optimized mode.
+if ARGUMENTS.get('debug'):
+    print 'Using debug targets'
+    env.Replace(DEBUG=True, CXXFLAGS='-O0 -g -Wall ')
+else:
+    print 'Using optimised targets'
+    env.Replace(DEBUG=False, CXXFLAGS='-O3 -DNDEBUG -Wall ')
+
+# Configure the environment.
+env = checkLibraries(env)
+
+#----------------------------------------------------------------------------#
+
+SConscript('imgSeekLib/SConscript', exports='env')
+
+#----------------------------------------------------------------------------#
+

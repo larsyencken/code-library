@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<UserCombinePreferences filename="/home/lars/Documents/Code Library/c-sharp/kana/kana.mds">
+  <Files>
+    <File filename="../../../Research/src/tools/kana/kana.hpp" />
+    <File filename="../../../Research/src/tools/kana/kana.cpp" />
+    <File filename="./CharacterModel.cs" />
+    <File filename="./CharacterModelTest.cs" />
+  </Files>
+  <Views>
+    <ViewMemento Id="MonoDevelop.Ide.Gui.Pads.ProjectPad">
+      <TreeView>
+        <Node expanded="True">
+          <Node name="kana" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="CharacterModel.cs" expanded="False" selected="True" />
+          </Node>
+        </Node>
+      </TreeView>
+    </ViewMemento>
+    <ViewMemento Id="MonoDevelop.Ide.Gui.Pads.ClassPad">
+      <TreeView>
+        <Node expanded="True" selected="True">
+          <Node name="kana" expanded="True" />
+        </Node>
+      </TreeView>
+    </ViewMemento>
+    <ViewMemento Id="MonoDevelop.NUnit.TestPad">
+      <TreeView>
+        <Node expanded="True" selected="True">
+          <Node name="kana" expanded="True">
+            <Node name="kana" expanded="True">
+              <Node name="CharacterModelTest" expanded="True" />
+            </Node>
+          </Node>
+        </Node>
+      </TreeView>
+    </ViewMemento>
+  </Views>
+  <Properties>
+    <Properties>
+      <Property key="ActiveConfiguration" value="Debug" />
+      <Property key="ActiveWindow" value="/home/lars/Documents/Code Library/c-sharp/kana/CharacterModel.cs" />
+    </Properties>
+  </Properties>
+</UserCombinePreferences>

@@ -1,0 +1,22 @@
+#!/usr/bin/env perl
+
+use strict;
+
+print("Hello, world\n");
+
+my $animal = "cat";
+print("I like ${animal}s\n");
+
+my @animals = ("dog", "cat", "llama");
+my %animalProblems = (
+    dog => "drools",
+    cat => "scratches",
+    llama => "spits"
+);
+
+my $var = 1;
+my $thisAnimal = @animals[$var];
+foreach (@animals) {
+    print("The problem with my $_ is that he ");
+    print("$animalProblems{$_}\n");
+}

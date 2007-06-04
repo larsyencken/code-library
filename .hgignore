@@ -1,0 +1,14 @@
+syntax: glob
+*.orig
+*.rej
+*~
+*.o
+*.so
+*.os
+*.pyo
+*.pyc
+*.log
+.sconf_temp/*
+.sconsign.dblite
+*.dylib
+.DS_Store
