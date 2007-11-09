@@ -13,6 +13,9 @@ pathlib
 friendlyReminder
     A django project to email reminders about repetetive tasks.
 
+jabberwacky
+    An interactive interface to the online jabberwacky chat bot.
+
 pychasen
     A python interface for libchasen.
 
