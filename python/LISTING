@@ -1,0 +1,33 @@
+Python snippets available
+=========================
+cleanUtf8
+    A script to clean utf8 files.
+
+jptools
+    An older standalone version of cjktools.
+
+pathlib 
+    A module for dynamically calculating paths relative to a project root
+    (without using environment vars). 
+
+friendlyReminder
+    A django project to email reminders about repetetive tasks.
+
+pychasen
+    A python interface for libchasen.
+
+pymecab
+    A python interface for libmecab.
+
+pyrex-primes
+    A Pyrex example which calculates primes quickly.
+
+structs
+    A further abstraction module built on top of the CPython struct module,
+    for specifying and parsing C structures (e.g. for binary files).
+
+xml-minidom
+    Some example code using xml.dom.minidom.
+
+wine
+    A program to mine wine reviews off the web.
