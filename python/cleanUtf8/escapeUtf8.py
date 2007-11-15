@@ -17,9 +17,13 @@ from cjktools.common import sopen
 #----------------------------------------------------------------------------#
  
 def escapeUtf8(inputFile, outputFile):
-    """
-    """
-    raise Exception, "Not yet implemented"
+    iStream = sopen(inputFile, 'r', 'utf8')
+    oStream = sopen(outputFile, 'w', 'unicode-escape')
+    for line in iStream:
+        oStream.write(line)
+    oStream.close()
+    iStream.close()
+    return
 
 #----------------------------------------------------------------------------#
 
