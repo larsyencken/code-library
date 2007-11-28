@@ -89,7 +89,7 @@ class Chasen(object):
             sentence = sentence.encode('utf8')
         sentence = sentence.replace('\n', '')
         result = unicode(_chasen_sparse_tostr(sentence), 'utf8')
-        lines = result.split('\n')
+        lines = filter(None, result.split('\n'))
         sentence = []
         for i, line in enumerate(lines):
             if line != ('EOS'):
