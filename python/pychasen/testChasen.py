@@ -27,7 +27,6 @@ class ChasenTestCase(unittest.TestCase):
     This class tests the Chasen class. 
     """
     def setUp(self):
-        self.rcFile = 'chasenrc'
         pass
 
     def testBadRc(self):
@@ -39,7 +38,7 @@ class ChasenTestCase(unittest.TestCase):
         assert False, "No error on bad rc file"
 
     def testParse(self):
-        c = chasen.Chasen(self.rcFile)
+        c = chasen.Chasen()
         input = u'寿司が好きです。'
         sentence = c.parse(input)
         self.assertEqual(5, len(sentence))
