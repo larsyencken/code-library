@@ -12,3 +12,5 @@ syntax: glob
 .sconsign.dblite
 *.dylib
 .DS_Store
+python/mineAsahi/article*.txt
+*.swp
