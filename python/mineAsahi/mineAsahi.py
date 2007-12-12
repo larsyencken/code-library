@@ -11,10 +11,16 @@
 import os, sys, optparse
 import re
 import time
-from urllib2 import urlopen
+from urllib2 import urlopen, HTTPError
 
 from cjktools.common import sopen
 import worker
+
+seedLinks = [
+    'http://www.asahi.com/politics/update/1212/TKY200712120454.html',
+    'http://www.asahi.com/national/update/1212/OSK200712120090.html',
+    'http://www.asahi.com/sports/update/1212/OSK200712120088.html',
+]
 
 #----------------------------------------------------------------------------#
 # PUBLIC
@@ -25,10 +31,12 @@ _lastArticle = 0
 
 _threadPool = worker.ThreadPool(5)
 
-def mineAsahi(startLink):
-    _visitedLinks.add(startLink)
-    requests = worker.makeRequests(_fetchPage, [startLink], _parsePage)
-    _threadPool.putRequest(requests[0])
+def mineAsahi():
+    for link in seedLinks:
+        _visitedLinks.add(link)
+    requests = worker.makeRequests(_fetchPage, seedLinks, _parsePage)
+    for req in requests:
+        _threadPool.putRequest(req)
 
     while 1:
         try:
@@ -43,15 +51,26 @@ def mineAsahi(startLink):
 #----------------------------------------------------------------------------#
 
 def _fetchPage(url):
-    data = unicode(urlopen(url).read(), 'euc-jp')
+    print url
+    try:
+        data = unicode(urlopen(url).read(), 'euc-jp')
+    except HTTPError:
+        print "Bad url: " + url
+        return None
+
     return data
 
 def _parsePage(request, data):
+    if not data:
+        return
     article = _parseArticle(data)
-    _dumpArticle(article)
+    if article:
+        _dumpArticle(article)
 
     links = _parseLinks(data)
     unvisitedLinks = [link for link in links if link not in _visitedLinks]
+    for link in unvisitedLinks:
+        _visitedLinks.add(link)
 
     newRequests = worker.makeRequests(_fetchPage, unvisitedLinks, _parsePage)
     for req in newRequests:
@@ -73,6 +92,8 @@ def _compilePattern(pattern):
 
 _articlePattern = _compilePattern(r'<h1 id="cap">(?P<title>.*?)</h1>.*?<div class="kiji">(?P<text>.*?)</div>')
 
+_tagPattern = _compilePattern(r'</?.*?>')
+
 def _parseArticle(data):
     match = _articlePattern.search(data)
 
@@ -82,21 +103,22 @@ def _parseArticle(data):
     groupDict = match.groupdict()
     title = groupDict['title']
     text = groupDict['text']
-    text = text.replace('<p>', '').replace('</p>', '')
+    text = _tagPattern.sub('', text)
     return title + '\n\n' + text
 
-_linkPattern = _compilePattern(r'/[a-z]+/update/[0-9]+/[A-Z0-9]+.html')
+_linkPattern = _compilePattern(r'href="/[a-zA-Z0-9/]+.html"')
 
 example = 'http://www.asahi.com/national/update/1212/JJT200712120008.html'
+
+def _trimLink(link):
+    return link[len('href="'):-1]
 
 def _parseLinks(data):
     links = _linkPattern.findall(data)
     qualifiedLinks = []
     for link in links:
-        if not link.startswith('http://www.asahi.com'):
-            qualifiedLinks.append('http://www.asahi.com' + link)
-        else:
-            qualifiedLinks.append(link)
+        link = 'http://www.asahi.com' + _trimLink(link)
+        qualifiedLinks.append(link)
 
     return qualifiedLinks
 
@@ -128,9 +150,7 @@ def main(argv):
     parser = _createOptionParser()
     (options, args) = parser.parse_args(argv)
 
-    try:
-        [startLink] = args
-    except:
+    if args:
         parser.print_help()
         sys.exit(1)
 
@@ -142,7 +162,7 @@ def main(argv):
         except:
             pass
 
-    mineAsahi(startLink)
+    mineAsahi()
     
     return
 
