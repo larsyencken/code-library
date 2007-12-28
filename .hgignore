@@ -17,3 +17,4 @@ python/mineAsahi/**/article*.txt
 mercury/*.{c,d,dep,err,c_date,dv,mh,mih,s_date}
 c++/testMysql/main
 c++/typeSizes/typeSizes
+c++/locales/main
