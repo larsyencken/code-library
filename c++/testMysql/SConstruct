@@ -1,0 +1,3 @@
+
+env = Environment(CXXFLAGS="-I/usr/local/mysql/include")
+env.Program("main.cpp")
