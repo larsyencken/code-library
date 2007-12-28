@@ -15,3 +15,5 @@ syntax: glob
 python/mineAsahi/**/article*.txt
 *.swp
 mercury/*.{c,d,dep,err,c_date,dv,mh,mih,s_date}
+c++/testMysql/main
+c++/typeSizes/typeSizes
