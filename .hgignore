@@ -12,4 +12,6 @@ syntax: glob
 .sconsign.dblite
 *.dylib
 .DS_Store
+python/mineAsahi/**/article*.txt
+*.swp
 mercury/*.{c,d,dep,err,c_date,dv,mh,mih,s_date}

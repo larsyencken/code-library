@@ -1,0 +1,8 @@
+SharedLibrary(
+    'testMod',
+    'testMod.cpp',
+    LIBS='python2.5',
+    SHLIBPREFIX='',
+    SHLINKFLAGS='$LINKFLAGS -bundle -flat_namespace -undefined suppress',
+    SHLIBSUFFIX='.so',
+)
