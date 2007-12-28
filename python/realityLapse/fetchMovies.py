@@ -18,12 +18,17 @@ from cjktools.common import sopen
 # PUBLIC
 #----------------------------------------------------------------------------#
  
-def fetchMovies(name):
+def fetchMovies(name, startEpisode=None):
     """
     """
     links = getEpisodeLinks(name)
 
     for link in links:
+        if startEpisode:
+            number = int(re.search('([0-9]+).rmvb$', link).group(1))
+            if number < startEpisode:
+                print 'Skipping episode %d' % number
+                continue
         fetchEpisode(link)
 
     return
@@ -78,6 +83,9 @@ Fetches all the episodes available in the given series."""
     parser.add_option('--debug', action='store_true', dest='debug',
             default=False, help='Enables debugging mode [False]')
 
+    parser.add_option('--from', action='store', dest='startEpisode',
+            type='int', help="Don't download any episodes before this one.")
+
     return parser
 
 #----------------------------------------------------------------------------#
@@ -102,7 +110,7 @@ def main(argv):
         except:
             pass
 
-    fetchMovies(name)
+    fetchMovies(name, startEpisode=options.startEpisode)
     
     return
 
