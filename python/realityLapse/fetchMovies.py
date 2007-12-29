@@ -12,31 +12,34 @@ import os, sys, optparse
 import re
 import urllib2
 
-from cjktools.common import sopen
-
 #----------------------------------------------------------------------------#
 # PUBLIC
 #----------------------------------------------------------------------------#
  
-def fetchMovies(name, startEpisode=None):
-    """
-    """
-    links = getEpisodeLinks(name)
+def fetchMovies(seriesName, startFromEpisode, dryRun=False):
+    links = getEpisodeLinks(seriesName)
+
+    if not links:
+        print 'No episodes found for series: %s' % seriesName
+        return
+
+    print 'Found %d episodes' % len(links)
+    print 'Beginning to download'
 
     for link in links:
-        if startEpisode:
-            number = int(re.search('([0-9]+).rmvb$', link).group(1))
-            if number < startEpisode:
-                print 'Skipping episode %d' % number
-                continue
-        fetchEpisode(link)
+        episodeNumber = int(re.search('([0-9]+).rmvb$', link).group(1))
+        if episodeNumber < startFromEpisode:
+            print 'Skipping episode %d' % episodeNumber
+            continue
+
+        fetchEpisode(link, dryRun)
 
     return
 
-def fetchEpisode(link):
-    sys.stdout.write('Fetching %s' % \
-            re.search('[a-z]+[0-9]+.rmvb$', link).group(0))
-    sys.stdout.flush()
+def fetchEpisode(link, dryRun=False):
+    """Fetch an episode given the link to its download page."""
+    filename = re.search('[a-z]+[0-9]+.rmvb$', link).group(0)
+    print 'Fetching %s' % filename
 
     iStream = urllib2.urlopen(link)
     page = iStream.read()
@@ -44,13 +47,19 @@ def fetchEpisode(link):
     
     match = re.search(r'http://(?P<server>[a-z]+)\.realitylapse.com/dl/[0-9a-f/]*/fulleps/[a-z-]+/[a-z-]+[0-9]+\.rmvb', page)
     if match is None:
-        print '\n--> Error'
-        import pdb; pdb.set_trace()
-    else:
-        print ' (%s)' % match.group('server')
-        os.system('wget %s' % match.group(0))
+        print '--> Error (maybe page format has changed)'
+        sys.exit(1)
+
+    realLink = match.group(0)
+    print '--> from %s server' % match.group('server')
+
+    if not dryRun:
+        os.system('wget %s' % realLink)
+
+    return
 
 def getEpisodeLinks(name):
+    """Fetch all the download links for episodes matching this series name."""
     assert ' ' not in name
     link = 'http://realitylapse.com/videos/%s.php' % name
     iStream = urllib2.urlopen(link)
@@ -76,15 +85,26 @@ def _createOptionParser():
     usage = \
 """%prog [options] series-name
 
-Fetches all the episodes available in the given series."""
+Fetches all the episodes available in the given series. The series needs to
+be specified by its short name, which you have to determine by going to
+reality lapse and looking at the URL for the series.
+
+Note that the --from option can be used if you already have some of the
+episodes.
+"""
 
     parser = optparse.OptionParser(usage)
 
     parser.add_option('--debug', action='store_true', dest='debug',
             default=False, help='Enables debugging mode [False]')
 
-    parser.add_option('--from', action='store', dest='startEpisode',
-            type='int', help="Don't download any episodes before this one.")
+    parser.add_option('--from', action='store', dest='startFromEpisode',
+            type='int', default=1,
+            help="Don't download any episodes before this one.")
+
+    parser.add_option('-d', '--dryrun', action='store_true', dest='dryRun',
+            default=False,
+            help="Only perform a dry run. Don't actually fetch anything.")
 
     return parser
 
@@ -96,22 +116,23 @@ def main(argv):
     parser = _createOptionParser()
     (options, args) = parser.parse_args(argv)
 
+    if not os.path.exists('/usr/bin/wget'):
+        print "Can't find wget -- please install it and try again"
+        return
+
     try:
-        [name] = args
+        [seriesName] = args
     except:
         parser.print_help()
         sys.exit(1)
 
-    # Avoid psyco in debugging mode, since it merges stack frames.
-    if not options.debug:
-        try:
-            import psyco
-            psyco.profile()
-        except:
-            pass
+    try:
+        fetchMovies(seriesName, options.startFromEpisode,
+                dryRun=options.dryRun)
 
-    fetchMovies(name, startEpisode=options.startEpisode)
-    
+    except KeyboardInterrupt:
+        pass
+
     return
 
 #----------------------------------------------------------------------------#
