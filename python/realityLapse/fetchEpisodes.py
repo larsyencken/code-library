@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------#
-# fetchMovies.py
+# fetchEpisodes.py
 # Lars Yencken <lars.yencken@gmail.com>
 # vim: ts=4 sw=4 sts=4 et tw=78:
 # Sun 23 Dec 2007 13:52:27 EST
@@ -16,7 +16,7 @@ import urllib2
 # PUBLIC
 #----------------------------------------------------------------------------#
  
-def fetchMovies(seriesName, startFromEpisode, dryRun=False):
+def fetchEpisodes(seriesName, startFromEpisode, dryRun=False):
     links = getEpisodeLinks(seriesName)
 
     if not links:
@@ -127,7 +127,7 @@ def main(argv):
         sys.exit(1)
 
     try:
-        fetchMovies(seriesName, options.startFromEpisode,
+        fetchEpisodes(seriesName, options.startFromEpisode,
                 dryRun=options.dryRun)
 
     except KeyboardInterrupt:
