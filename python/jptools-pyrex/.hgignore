@@ -1,0 +1,23 @@
+syntax: glob
+*.orig
+*.rej
+*~
+*.o
+*.so
+*.os
+*.pyo
+*.pyc
+*.log
+build/*
+html/*
+.sconf_temp/*
+.sconsign.dblite
+www/localSettings.py
+cache/*
+tmp/*
+log/*
+*.swp
+MANIFEST
+dist/*
+*.deb
+src/_*.c
