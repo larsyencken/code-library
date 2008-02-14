@@ -1,0 +1,3 @@
+Tests loading words from a file, one per line. This is useful for isolation
+testing of this feature in particular, trying to work out the fastest way to
+get the data into memory and useful.
