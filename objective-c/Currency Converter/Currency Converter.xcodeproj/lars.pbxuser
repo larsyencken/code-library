@@ -1,0 +1,126 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Release;
+		activeExecutable = 46BEDB3B0DA5EC1A0045BF30 /* Currency Converter */;
+		activeTarget = 8D1107260486CEB800E47090 /* Currency Converter */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* Currency Converter */,
+		);
+		codeSenseManager = 46BEDB4E0DA5EC390045BF30 /* Code sense */;
+		executables = (
+			46BEDB3B0DA5EC1A0045BF30 /* Currency Converter */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 228989592;
+			PBXWorkspaceStateSaveDate = 228989592;
+		};
+		sourceControlManager = 46BEDB4D0DA5EC390045BF30 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {685, 657}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 264}";
+			sepNavWindowFrame = "{{84, 212}, {744, 785}}";
+		};
+	};
+	46BEDB3B0DA5EC1A0045BF30 /* Currency Converter */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Currency Converter";
+		sourceDirectories = (
+		);
+	};
+	46BEDB4D0DA5EC390045BF30 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	46BEDB4E0DA5EC390045BF30 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	46BEDB4F0DA5EC860045BF30 /* Converter.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {685, 657}}";
+			sepNavSelRange = "{336, 0}";
+			sepNavVisRange = "{0, 336}";
+			sepNavWindowFrame = "{{202, 57}, {744, 785}}";
+		};
+	};
+	46BEDB500DA5EC860045BF30 /* Converter.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {685, 657}}";
+			sepNavSelRange = "{324, 0}";
+			sepNavVisRange = "{0, 325}";
+			sepNavWindowFrame = "{{240, 114}, {744, 785}}";
+		};
+	};
+	46BEDB5C0DA5F3F20045BF30 /* ConverterController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {685, 657}}";
+			sepNavSelRange = "{430, 0}";
+			sepNavVisRange = "{0, 430}";
+			sepNavWindowFrame = "{{545, 59}, {744, 785}}";
+		};
+	};
+	46BEDB5D0DA5F3F20045BF30 /* ConverterController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {463, 416}}";
+			sepNavSelRange = "{386, 0}";
+			sepNavVisRange = "{262, 301}";
+			sepNavWindowFrame = "{{174, 128}, {744, 785}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* Currency Converter */ = {
+		activeExec = 0;
+		executables = (
+			46BEDB3B0DA5EC1A0045BF30 /* Currency Converter */,
+		);
+	};
+}
