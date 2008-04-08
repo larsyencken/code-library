@@ -90,7 +90,7 @@ def main(argv):
         except:
             pass
 
-    notify(title, message, appName="Python shell")
+    notify(title=title, message=message, appName="Python shell")
     
     return
 
