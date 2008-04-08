@@ -16,7 +16,8 @@ import os, sys, optparse
 # PUBLIC
 #----------------------------------------------------------------------------#
  
-def notify(title=None, message=None, appName=None):
+def notify(title=None, message=None, appName='python shell'):
+    "Provide the user with a notification or fail silently."
     try:
         notifyUsingPynotify(title=title, message=message, appName=appName)
         return
