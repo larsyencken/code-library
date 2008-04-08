@@ -1,0 +1,9 @@
+syntax: glob
+*.so
+*.os
+*.o
+*.swp
+*.pyc
+*.pyo
+.sconsign.*
+tester

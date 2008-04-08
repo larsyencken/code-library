@@ -1,0 +1,14 @@
+
+
+env = Environment(
+    CCFLAGS="-Wall",
+)
+
+debug = ARGUMENTS.get('debug', 0)
+if int(debug):
+    env.Append(CCFLAGS=' -O0 -g')
+    env.Append(LINKFLAGS=' -g')
+else:
+    env.Append(CCFLAGS=' -O3 -fexpensive-optimizations -funroll-loops -fomit-frame-pointer')
+
+env.Program('linkedSort', 'linkedSort.c')

@@ -1,0 +1,2 @@
+db_module=wiki.model
+history_dir=$base/wiki/sqlobject-history

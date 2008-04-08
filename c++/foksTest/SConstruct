@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+#----------------------------------------------------------------------------#
+# SConstruct
+# Lars Yencken <lars.yencken@gmail.com>
+# vim: ts=4 sw=4 sts=4 et tw=78:
+# Thu Aug 30 18:01:14 2007
+#
+#----------------------------------------------------------------------------#
+
+""" 
+"""
+
+#----------------------------------------------------------------------------#
+
+#----------------------------------------------------------------------------#
+
+env = Environment(
+        CXXFLAGS='-Wno-deprecated',
+    )
+
+debug = ARGUMENTS.get('debug', 0)
+if int(debug):
+    env.Append(CXXFLAGS=' -O0 -g')
+    env.Append(LINKFLAGS=' -g')
+else:
+    env.Append(CXXFLAGS=' -O3 -fexpensive-optimizations -funroll-loops -fomit-frame-pointer')
+
+profile = ARGUMENTS.get('profile', 0)
+if int(profile):
+    env.Append(CXXFLAGS=' -pg')
+
+env.Program('readWords.cpp')

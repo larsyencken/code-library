@@ -1,0 +1,5 @@
+env = Environment(
+        CXXFLAGS='-Wall'
+    )
+
+env.Program('tester', Split('tester.cpp bitset.cpp'))

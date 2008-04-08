@@ -1,0 +1,11 @@
+env = Environment(
+        CXXFLAGS='-Wall',
+    )
+
+if ARGUMENTS.get('debug'):
+    env.Append(
+            CXXFLAGS=' -g -O0',
+            LINKFLAGS=' -g',
+        )
+
+env.Program('mbs', 'mbs.cpp')
