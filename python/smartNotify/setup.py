@@ -18,5 +18,6 @@ from distutils.core import setup
 setup(
         name='smartNotify',
         version='0.1',
+        py_modules=['smartNotify'],
         scripts=['smartNotify.py']
     )
