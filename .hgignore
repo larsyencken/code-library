@@ -22,4 +22,6 @@ c++/typeSizes/typeSizes
 c++/locales/main
 c++/io/io
 c++/bitset/tester
+c++/reverse/reverse
+c++/fib/fib
 objective-c/*/build
