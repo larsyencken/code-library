@@ -21,4 +21,5 @@ c++/testMysql/main
 c++/typeSizes/typeSizes
 c++/locales/main
 c++/io/io
+c++/bitset/tester
 objective-c/*/build
