@@ -24,4 +24,5 @@ c++/io/io
 c++/bitset/tester
 c++/reverse/reverse
 c++/fib/fib
+c++/sieve/sieve
 objective-c/*/build
