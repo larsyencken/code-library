@@ -40,9 +40,16 @@ bool is_prime(unsigned int n)
     {
         primes[i] = true;
     }
+    
+    // Fill in multiples of known primes.
     int j;
     for (int i = 2; i <= sqrt(n); i++)
     {
+        if (!primes[i])
+        {
+            continue;
+        }
+            
         for (j = i; j < n; j += i)
         {
             primes[j] = false;
