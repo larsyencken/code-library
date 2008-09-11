@@ -23,6 +23,11 @@ c++/bool/boolTest
 c++/testMysql/main
 c++/typeSizes/typeSizes
 c++/locales/main
+c++/io/io
+c++/bitset/tester
+c++/reverse/reverse
+c++/fib/fib
+c++/sieve/sieve
 c++/linkedSort/linkedSort
 c++/nasty/nasty
 c++/foksTest/{readWords,tester}

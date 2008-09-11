@@ -1,0 +1,145 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Release;
+		activeExecutable = 4607A8AC0DA6388500216CA5 /* FOKS Dictionary */;
+		activeTarget = 8D1107260486CEB800E47090 /* FOKS Dictionary */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* FOKS Dictionary */,
+		);
+		breakpoints = (
+			463995090DA6401D007AACE8 /* DictionaryModel.h:13 */,
+		);
+		codeSenseManager = 4607A8BC0DA6388900216CA5 /* Code sense */;
+		executables = (
+			4607A8AC0DA6388500216CA5 /* FOKS Dictionary */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 229132219;
+			PBXWorkspaceStateSaveDate = 229132219;
+		};
+		perUserProjectItems = {
+			469F784A0DA848D20090546D /* PBXBookmark */ = 469F784A0DA848D20090546D /* PBXBookmark */;
+			469F78590DA84D7B0090546D /* PBXTextBookmark */ = 469F78590DA84D7B0090546D /* PBXTextBookmark */;
+		};
+		sourceControlManager = 4607A8BB0DA6388900216CA5 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	4607A8AC0DA6388500216CA5 /* FOKS Dictionary */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "FOKS Dictionary";
+		sourceDirectories = (
+		);
+	};
+	4607A8BB0DA6388900216CA5 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	4607A8BC0DA6388900216CA5 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	463994FF0DA63D1E007AACE8 /* DictionaryController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {685, 657}}";
+			sepNavSelRange = "{385, 0}";
+			sepNavVisRange = "{0, 391}";
+			sepNavWindowFrame = "{{76, 88}, {744, 785}}";
+		};
+	};
+	463995000DA63D1E007AACE8 /* DictionaryController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {685, 657}}";
+			sepNavSelRange = "{289, 0}";
+			sepNavVisRange = "{0, 295}";
+			sepNavWindowFrame = "{{588, 93}, {744, 785}}";
+		};
+	};
+	463995020DA63E03007AACE8 /* DictionaryModel.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {685, 657}}";
+			sepNavSelRange = "{217, 0}";
+			sepNavVisRange = "{0, 225}";
+			sepNavWindowFrame = "{{140, 49}, {744, 785}}";
+		};
+	};
+	463995090DA6401D007AACE8 /* DictionaryModel.h:13 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 463995020DA63E03007AACE8 /* DictionaryModel.h */;
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 13;
+		modificationTime = 228999197.538118;
+		state = 1;
+	};
+	469F784A0DA848D20090546D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 463994FF0DA63D1E007AACE8 /* DictionaryController.h */;
+	};
+	469F78590DA84D7B0090546D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 463994FF0DA63D1E007AACE8 /* DictionaryController.h */;
+		name = "DictionaryController.h: 18";
+		rLen = 0;
+		rLoc = 385;
+		rType = 0;
+		vrLen = 391;
+		vrLoc = 0;
+	};
+	8D1107260486CEB800E47090 /* FOKS Dictionary */ = {
+		activeExec = 0;
+		executables = (
+			4607A8AC0DA6388500216CA5 /* FOKS Dictionary */,
+		);
+	};
+}

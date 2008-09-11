@@ -8,6 +8,8 @@
 #
 #----------------------------------------------------------------------------#
 
+"A script which fetches anime episodes from the Reality Lapse web site."
+
 import os, sys, optparse
 import re
 import urllib2
