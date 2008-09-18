@@ -31,6 +31,8 @@ c++/sieve/sieve
 c++/linkedSort/linkedSort
 c++/nasty/nasty
 c++/foksTest/{readWords,tester}
+c++/omp-hello/hello
+c++/omp-taylor/{taylor,taylor_mp}
 objective-c/*/build
 javascript/dojo/dojoroot
 MANIFEST

@@ -1,0 +1,2 @@
+Program('taylor.c')
+Program('taylor_mp.c', LIBS=['gomp'], CFLAGS='-fopenmp')
