@@ -1,0 +1,5 @@
+obj = Object('lineareq.o', 'lineareq.c')
+Program('lineareq', obj, LIBS=['gomp'])
+
+obj_mp = Object('lineareq_mp.o', 'lineareq.c', CFLAGS='-fopenmp')
+Program('lineareq_mp', obj_mp, LIBS=['gomp'])

@@ -33,6 +33,7 @@ c++/nasty/nasty
 c++/foksTest/{readWords,tester}
 c++/omp-hello/hello
 c++/omp-taylor/{taylor,taylor_mp}
+c++/omp-lineareq/lineareq{,_mp}
 objective-c/*/build
 javascript/dojo/dojoroot
 MANIFEST
