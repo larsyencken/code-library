@@ -28,6 +28,9 @@ c++/bitset/tester
 c++/reverse/reverse
 c++/fib/fib
 c++/sieve/sieve
+<<<<<<< local
+c++/tr1/tr1
+=======
 c++/linkedSort/linkedSort
 c++/nasty/nasty
 c++/foksTest/{readWords,tester}
@@ -35,6 +38,7 @@ c++/omp-hello/hello
 c++/omp-taylor/{taylor,taylor_mp}
 c++/omp-lineareq/lineareq{,_mp}
 c++/pthread/example
+>>>>>>> other
 objective-c/*/build
 javascript/dojo/dojoroot
 MANIFEST
