@@ -17,8 +17,11 @@ import urllib2
 #----------------------------------------------------------------------------#
 # PUBLIC
 #----------------------------------------------------------------------------#
+
+_fetch_command = None
  
 def fetchEpisodes(seriesName, startFromEpisode, dryRun=False):
+    _init_fetch_command()
     links = getEpisodeLinks(seriesName)
 
     if not links:
@@ -56,7 +59,7 @@ def fetchEpisode(link, dryRun=False):
     print '--> from %s server' % match.group('server')
 
     if not dryRun:
-        os.system('wget %s' % realLink)
+        os.system('%s %s' % (_fetch_command, realLink))
 
     return
 
@@ -75,6 +78,15 @@ def getEpisodeLinks(name):
 #----------------------------------------------------------------------------#
 # PRIVATE
 #----------------------------------------------------------------------------#
+
+def _init_fetch_command():
+    global _fetch_command
+
+    if not _fetch_command:
+        _fetch_command = os.popen('which wget 2>/dev/null').read().strip()
+
+    if not _fetch_command:
+        _fetch_command = os.popen('which curl 2>/dev/null').read().strip()
 
 #----------------------------------------------------------------------------#
 # MODULE EPILOGUE
@@ -118,7 +130,8 @@ def main(argv):
     parser = _createOptionParser()
     (options, args) = parser.parse_args(argv)
 
-    if not os.path.exists('/usr/bin/wget'):
+    _init_fetch_command()
+    if not _fetch_command or not os.path.exists(_fetch_command):
         print "Can't find wget -- please install it and try again"
         return
 
