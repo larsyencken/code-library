@@ -25,4 +25,5 @@ c++/bitset/tester
 c++/reverse/reverse
 c++/fib/fib
 c++/sieve/sieve
+c++/tr1/tr1
 objective-c/*/build
