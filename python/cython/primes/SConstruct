@@ -23,7 +23,7 @@ env = Environment(
         LIBS=['python%s' % sysconfig.get_config_var('VERSION')],
     )
 
-pyxbuild = Builder(action='pyrexc -o $TARGET $SOURCE')
+pyxbuild = Builder(action='cython -o $TARGET $SOURCE')
 env.Append(BUILDERS={'Pyrex': pyxbuild})
 
 primes = env.Pyrex('primes.c', 'primes.pyx')
