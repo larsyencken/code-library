@@ -1,0 +1,53 @@
+# -*- coding: utf-8 -*-
+#----------------------------------------------------------------------------#
+# SConstruct
+# Lars Yencken <lars.yencken@gmail.com>
+# vim: ts=4 sw=4 sts=4 et tw=78:
+# Tue Feb 19 22:47:17 2008
+#
+#----------------------------------------------------------------------------#
+
+""" 
+"""
+
+#----------------------------------------------------------------------------#
+
+from distutils import sysconfig
+import os
+
+PASS_THROUGH = [
+        'PATH',
+        'CPATH',
+        'C_INCLUDE_DIR',
+        'LD_LIBRARY_PATH',
+        'PYTHONPATH',
+    ]
+
+#----------------------------------------------------------------------------#
+
+env = Environment(
+        CPPPATH=sysconfig.get_python_inc(),
+        LIBPATH=sysconfig.get_config_var('LIBPL'),
+        SHLIBPREFIX='',
+        LIBS=['python%s' % sysconfig.get_config_var('VERSION')],
+    )
+# Detect OS X python installation, and attempt to correct for it.
+if os.uname()[0] == 'Darwin':
+    env.Replace(SHLINKFLAGS='$LINKFLAGS -bundle -flat_namespace -undefined suppress')
+    env.Replace(SHLIBSUFFIX='.so')
+    if os.path.isdir('/opt/local'):
+        env.Append(
+                LIBPATH=['/opt/local/lib'],
+                CPPPATH=['/opt/local/include']
+    )
+
+envDict = env['ENV']
+for var in PASS_THROUGH:
+    if var in os.environ:
+        envDict[var] = os.environ[var]
+
+cython_build = Builder(action='cython -o $TARGET $SOURCE')
+env.Append(BUILDERS={'Cython': cython_build})
+
+bitset = env.Cython('bitset_cython.c', 'bitset_cython.pyx')
+env.SharedLibrary('bitset_cython', bitset)
