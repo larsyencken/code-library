@@ -8,6 +8,7 @@
 # 
 
 import ctypes
+import cPickle as pickle
 
 class Bitset(object):
     """
@@ -48,12 +49,17 @@ class Bitset(object):
             raise KeyError("key out of range")
         return bool((ord(self.data[key/8]) >> (key % 8)) & 1)
     
+    def get_data(self):
+        return pickle.dumps(self, pickle.HIGHEST_PROTOCOL)
+    
     def __iter__(self):
         """Iterates over all the keys present in the set."""
         for key in xrange(self.max_size + 1):
             if key in self:
                 yield key
 
+def from_data(data):
+    return pickle.loads(self)
 
 if __name__ == '__main__':
     b = Bitset(10000000)

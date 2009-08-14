@@ -10,6 +10,8 @@
 """
 """
 
+import cPickle as pickle
+
 import numpy
 
 class Bitset(object):
@@ -25,11 +27,17 @@ class Bitset(object):
     
     def remove(self, key):
         self._array[key] = False
+        
+    def get_data(self):
+        return pickle.dumps(self, pickle.HIGHEST_PROTOCOL)
     
     def __iter__(self):
-        for i in xrange(max_size + 1):
+        for i in xrange(self.max_size + 1):
             if self._array[i]:
                 yield i
+
+def from_data(data):
+    return pickle.loads(data)
 
 if __name__ == '__main__':
     b = Bitset(10000000)

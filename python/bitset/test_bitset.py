@@ -9,8 +9,7 @@
 
 import unittest
 import doctest
-#import bitset
-import bitset_cython as bitset
+import bitset_numpy as bitset
 import random
 import cPickle as pickle
 
