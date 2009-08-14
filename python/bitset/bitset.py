@@ -41,8 +41,8 @@ class Bitset(object):
     def remove(self, key):
         if not (0 <= key <= self.max_size):
             raise KeyError("key out of range")
-        self.data[key/8] = chr(ord(self.data[key/8]) & (0 ^ (1 << key & 8)))
-    
+        self.data[key/8] = chr(ord(self.data[key/8]) & (0xff ^ (1 << (key % 8))))   
+        
     def __contains__(self, key):
         if not (0 <= key <= self.max_size):
             raise KeyError("key out of range")
@@ -57,7 +57,7 @@ class Bitset(object):
 
 if __name__ == '__main__':
     b = Bitset(10000000)
-    while True:
+    for j in xrange(3):
         for i in xrange(10000000):
             b.add(i)
     

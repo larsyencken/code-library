@@ -13,6 +13,6 @@ Simple script designed to test memory usage of the interpreter.
 
 if __name__ == '__main__':
     x = set()
-    while True:
+    for j in xrange(3):
         for i in xrange(10000000):
             x.add(i)
