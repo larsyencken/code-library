@@ -40,3 +40,6 @@ objective-c/*/build
 javascript/dojo/dojoroot
 MANIFEST
 *.deb
+haskell/parallel/simplepar
+haskell/hello/hello
+*.hi
