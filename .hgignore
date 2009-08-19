@@ -42,4 +42,9 @@ MANIFEST
 *.deb
 haskell/parallel/simplepar
 haskell/hello/hello
+haskell/cat/cat
+haskell/wc/wc
+haskell/reverse/reverse
+haskell/cp/cp
+haskell/spell/spell
 *.hi
