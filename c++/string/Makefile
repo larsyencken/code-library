@@ -4,9 +4,9 @@
 
 CC = g++
 TARGETS = cppString.so pyString.so
-LIBS = -lpython2.4 -lboost_python
-INC = -I/usr/include/python2.4
-CXXFLAGS = -shared -O2
+LIBS = -lpython2.6 -lboost_python
+INC = -I/usr/include/python2.6
+CXXFLAGS = -shared -O2 -fpic
 
 default: $(TARGETS)
 
