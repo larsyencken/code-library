@@ -13,18 +13,21 @@ import System.Environment
 import Control.Monad
 import Control.Concurrent
 
+main :: IO()
 main = do
     (f, g, n) <- readFiles
     let dict = fromList (lines f)
         work = chunk n (words g)
     run n dict work
 
+chunk :: Int -> [String] -> [[String]]
 chunk n list = case list of { [] -> [] ; (y:ys) -> ch' ys (n-1) (y:) }
     where
     ch' [] _ k = k [] : []
     ch' (y:ys) 0 k = k [] : ch' ys (n-1) (y:)
     ch' (y:ys) (c+1) k = ch' ys c (k . (y:))
 
+readFiles :: IO(String, String, Int)
 readFiles = do
     [s, n] <- getArgs
     f <- readFile "/usr/share/dict/words"
@@ -37,16 +40,19 @@ readFiles = do
 --    hClose h
 --    printf "%d spelling errors written to '%s'\n" (length errs) t
 
+run :: Int -> Set String -> [[String]] -> IO()
 run n dict work = do
     chan <- newChan
     errs <- getChanContents chan
     mapM_ (forkIO . thread chan dict) (zip [1..n] work)
     wait n errs 0
 
+wait :: Int -> [Maybe String] -> Int -> IO()
 wait n xs i = when (i < n) $ case xs of
     Nothing : ys -> wait n ys $! i+1
     Just s  : ys -> putStrLn s >> wait n ys i
 
+thread :: Chan (Maybe String) -> Set String -> (Int, [String]) -> IO()
 thread chan dict (me, xs) = do
     mapM_ spellit xs
     writeChan chan Nothing
