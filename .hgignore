@@ -48,3 +48,5 @@ haskell/reverse/reverse
 haskell/cp/cp
 haskell/spell/spell
 *.hi
+*.class
+*.jar
