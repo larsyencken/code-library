@@ -13,18 +13,13 @@
 from __future__ import division
 import pyglet
 
-from pyglet.window import key
+from pyglet.window import key, mouse
 from math import *
 import sys
 
-platform = pyglet.window.get_platform()
-display = platform.get_default_display()
-screen = display.get_default_screen()
+window = pyglet.window.Window()
 
-template = pyglet.gl.Config(sample_buffers=1, samples=4)
-config = screen.get_best_config(template)
-context = config.create_context(None)
-window = pyglet.window.Window(context=context)
+#window.push_handlers(pyglet.window.event.WindowEventLogger())
 
 grid = None
 
@@ -48,6 +43,18 @@ def on_text_motion(motion):
     elif motion == key.MOTION_DOWN:
         grid.origin_y -= 10
 
+
+@window.event
+def on_mouse_drag(x, y, dx, dy, button, modifiers):
+    global grid
+    if button == mouse.LEFT:
+        grid.origin_x += dx
+        grid.origin_y += dy
+
+@window.event
+def on_mouse_scroll(x, y, dx, dy):
+    global grid
+    grid.scale *= 1.2 ** dy
 
 @window.event
 def on_key_press(symbol, modifiers):
