@@ -50,3 +50,6 @@ haskell/spell/spell
 *.hi
 *.class
 *.jar
+*.6
+go/hello
+go/echo

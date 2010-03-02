@@ -1,5 +1,22 @@
-hello: hello.6
-	6l -o hello hello.6
+#
+# Makefile
+#
 
-hello.6: hello.go
-	6g hello.go
+CC = 6g
+LD = 6l
+
+EXE = hello echo
+
+all: $(EXE)
+
+clean:
+	rm -f *.6
+
+clobber: clean
+	rm -rf $(EXE)
+
+%: %.6
+	$(LD) -o $@ $<
+
+%.6: %.go
+	$(CC) $<
