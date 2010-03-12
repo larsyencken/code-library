@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+#----------------------------------------------------------------------------#
+# SConstruct
+# Lars Yencken <lars.yencken@gmail.com>
+# vim: ts=4 sw=4 sts=4 et tw=78:
+# Tue Feb 19 22:47:17 2008
+#
+#----------------------------------------------------------------------------#
+
+""" 
+"""
+
+#----------------------------------------------------------------------------#
+
+from distutils import sysconfig
+
+#----------------------------------------------------------------------------#
+
+env = Environment(
+        CPPPATH=sysconfig.get_python_inc(),
+        LIBPATH=sysconfig.get_config_var('LIBPL'),
+        SHLIBPREFIX='',
+        CFLAGS="-O3 ",
+        LIBS=['python%s' % sysconfig.get_config_var('VERSION')],
+    )
+
+cython_build = Builder(action='cython -o $TARGET $SOURCE')
+env.Append(BUILDERS={'Cython': cython_build})
+
+sample_cython = env.Cython('sample_cython.c', 'sample_cython.pyx')
+env.SharedLibrary('sample_cython', sample_cython)
