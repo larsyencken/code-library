@@ -53,3 +53,4 @@ haskell/spell/spell
 *.6
 go/hello
 go/echo
+haxe/js/test/test.js
