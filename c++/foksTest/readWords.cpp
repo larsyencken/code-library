@@ -8,10 +8,12 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cstdlib>
 
 using namespace std;
 
 #include <stdio.h>
+#include <string.h>
 
 #include "utf8.h"
 
