@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <stdexcept>
+#include <cstdlib>
 
 void usage();
 void read_data(const char* filename, std::vector<int>& data);
