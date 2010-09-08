@@ -55,3 +55,6 @@ go/hello
 go/echo
 haxe/js/test/test.js
 haxe/js/ajax/test.js
+go/freq/example
+go/echo/echo
+go/hello/hello

@@ -5,7 +5,7 @@
 CC = 6g
 LD = 6l
 
-EXE = hello echo
+EXE = echo 
 
 all: $(EXE)
 
