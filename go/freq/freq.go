@@ -54,3 +54,30 @@ func (dist* FreqDist) Load(filename string) {
         dist.size += count
     }
 }
+
+type CondFreqDist struct {
+    counts map[string]*FreqDist
+}
+
+func NewCondFreqDist() *CondFreqDist {
+    dist := new(CondFreqDist)
+    dist.counts = make(map[string]*FreqDist)
+    return dist
+}
+
+func (dist *CondFreqDist) Inc(c string, s string) {
+    subdist, ok := dist.counts[c]
+    if !ok {
+        subdist = NewFreqDist()
+        dist.counts[c] = subdist
+    }
+    subdist.Inc(s)
+}
+
+func (dist *CondFreqDist) Prob(c string, s string) float {
+    subdist, ok := dist.counts[c]
+    if !ok {
+        return 0.0
+    }
+    return subdist.Prob(s)
+}
