@@ -58,3 +58,4 @@ haxe/js/ajax/test.js
 go/freq/example
 go/echo/echo
 go/hello/hello
+go/hashmap/example
