@@ -31,7 +31,7 @@ func (dist *FreqDist) Prob(s string) float {
     return float(count) / float(dist.size)
 }
 
-func (dist* FreqDist) Load(filename string) {
+func (dist *FreqDist) Load(filename string) {
     file, _ := os.Open(filename, os.O_RDONLY, 0666)
     if file == nil {
         panic("cannot open file")
