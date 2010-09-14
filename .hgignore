@@ -60,3 +60,4 @@ go/echo/echo
 go/hello/hello
 go/hashmap/example
 go/tokenizer/tokenize
+go/sieve/sieve
