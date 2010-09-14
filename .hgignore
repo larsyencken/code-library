@@ -59,3 +59,4 @@ go/freq/example
 go/echo/echo
 go/hello/hello
 go/hashmap/example
+go/tokenizer/tokenize
