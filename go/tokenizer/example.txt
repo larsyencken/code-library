@@ -1,0 +1,38 @@
+Semicolons
+----
+
+You might have noticed that our program has no semicolons.  In Go
+code, the only place you typically see semicolons is separating the
+clauses of "for" loops and the like; they are not necessary after
+every statement.
+
+In fact, what happens is that the formal language uses semicolons,
+much as in C or Java, but they are inserted automatically
+at the end of every line that looks like the end of a statement. You
+don't need to type them yourself.
+
+For details about how this is done you can see the language
+specification, but in practice all you need to know is that you
+never need to put a semicolon at the end of a line.  (You can put
+them in if you want to write multiple statements per line.) As an
+extra help, you can also leave out a semicolon immediately before
+a closing brace.
+
+This approach makes for clean-looking, semicolon-free code.  The
+one surprise is that it's important to put the opening
+brace of a construct such as an "if" statement on the same line as
+the "if"; if you don't, there are situations that may not compile
+or may give the wrong result.  The language forces the brace style
+to some extent.
+
+Compiling
+----
+
+Go is a compiled language.  At the moment there are two compilers.
+"Gccgo" is a Go compiler that uses the GCC back end.  There is also a
+suite of compilers with different (and odd) names for each architecture:
+"6g" for the 64-bit x86, "8g" for the 32-bit x86, and more.  These
+compilers run significantly faster but generate less efficient code
+than "gccgo".  At the time of writing (late 2009), they also have
+a more robust run-time system although "gccgo" is catching up.
+
