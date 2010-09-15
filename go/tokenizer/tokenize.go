@@ -5,6 +5,8 @@
 package main
 
 import (
+    "os"
+    "io"
     "fmt"
     "regexp"
     "container/vector"
@@ -66,12 +68,13 @@ func Copy(src []byte, dest []byte) {
 func main() {
     tr := WordPunctTokenizer()
 
-    lines, err := lines.Iterate("example.txt")
-    if err != nil {
-        panic(err.String())
-    }
+    ls := make(chan string)
+    go func() {
+        lines.Iterate(io.Reader(os.Stdin), ls)
+        close(ls)
+    }()
 
-    ch := tr.TokenizeChannel(lines)
+    ch := tr.TokenizeChannel(ls)
     first := true
     for tok := range ch {
         if tok == "<EOL>" {
