@@ -9,41 +9,62 @@ import (
     "io"
     "fmt"
     "regexp"
-    "container/vector"
     "./lines"
 )
 
 type Tokenizer interface {
-    Tokenize(s string) *vector.StringVector
-    TokenizeChannel(chan string) chan string
+    Tokenize(s string) <-chan string
 }
 
-type RegexpTokenizer struct {
-    expr *regexp.Regexp
-}
-
-func (tr RegexpTokenizer) Tokenize(s string) *vector.StringVector {
-    v := new(vector.StringVector)
-    ch := tr.expr.AllMatchesStringIter(s, 0)
-    for t := range ch {
-        v.Push(t)
-    }
-    return v
-}
-
-func (tr RegexpTokenizer) TokenizeChannel(input chan string) chan string {
+func TokenizeChannel(tr Tokenizer, input chan string) chan string {
     c := make(chan string, 40)
     go func() {
         defer close(c)
 
         for s := range input {
-            for t := range tr.expr.AllMatchesStringIter(s, 0) {
+            for t := range tr.Tokenize(s) {
                 c <- t
             }
             c <- "<EOL>"
         }
     }()
     return c
+}
+
+type WhitespaceTokenizer struct {}
+
+func (tr WhitespaceTokenizer) Tokenize(s string) <-chan string {
+    ch := make(chan string)
+    go func() {
+        defer close(ch)
+        offset := 0
+        for i, c := range(s) {
+            if isSpace(c) {
+                l := i - offset
+                if l > 0 {
+                    ch <- s[offset:i]
+                }
+                offset = i + 1
+            }
+        }
+        if len(s) - offset > 0 {
+            ch <- s[offset:len(s)]
+        }
+    }()
+    return ch
+}
+
+func isSpace(b int) bool {
+    return b == ' ' || b == '\t' || b == '\n'
+}
+
+type RegexpTokenizer struct {
+    expr *regexp.Regexp
+}
+
+func (tr RegexpTokenizer) Tokenize(s string) <-chan string {
+    ch := tr.expr.AllMatchesStringIter(s, 0)
+    return ch
 }
 
 func WordPunctTokenizer() Tokenizer {
@@ -66,7 +87,7 @@ func Copy(src []byte, dest []byte) {
 }
 
 func main() {
-    tr := WordPunctTokenizer()
+    tr := new(WhitespaceTokenizer)
 
     ls := make(chan string)
     go func() {
@@ -74,7 +95,7 @@ func main() {
         close(ls)
     }()
 
-    ch := tr.TokenizeChannel(ls)
+    ch := TokenizeChannel(tr, ls)
     first := true
     for tok := range ch {
         if tok == "<EOL>" {
