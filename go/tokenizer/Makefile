@@ -2,7 +2,10 @@
 #  Makefile
 #
 
-all: tokenize
+all: tokenize tokenize_vector
+
+tokenize_vector: lines.6 tokenize_vector.6
+	6l -o tokenize_vector tokenize_vector.6
 
 tokenize: lines.6 tokenize.6 
 	6l -o tokenize tokenize.6
