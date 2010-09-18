@@ -2,10 +2,13 @@
 #  Makefile
 #
 
-all: tokenize tokenize_vector
+all: tokenize tokenize_vector tokenize_fast
 
 tokenize_vector: lines.6 tokenize_vector.6
 	6l -o tokenize_vector tokenize_vector.6
+
+tokenize_fast: tokenize_fast.6
+	6l -o tokenize_fast tokenize_fast.6
 
 tokenize: lines.6 tokenize.6 
 	6l -o tokenize tokenize.6

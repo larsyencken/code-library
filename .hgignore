@@ -64,4 +64,5 @@ go/hello/hello
 go/hashmap/example
 go/tokenizer/tokenize
 go/tokenizer/tokenize_vector
+go/tokenizer/tokenize_fast
 go/sieve/sieve
