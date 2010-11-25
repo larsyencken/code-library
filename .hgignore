@@ -39,6 +39,7 @@ c++/omp-taylor/{taylor,taylor_mp}
 c++/omp-lineareq/lineareq{,_mp}
 c++/pthread/example
 c++/tokenizer/tokenizer
+c++/stl-map/testMap
 objective-c/*/build
 javascript/dojo/dojoroot
 MANIFEST
