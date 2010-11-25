@@ -30,7 +30,7 @@ def shortest_path(vocab_file, gr_file):
             _print_path(sp)
 
 def _print_path(p):
-    print '1', '/'.join(['@'] + p.path + ['@'])
+    print '1', ' '.join(['@'] + p.path + ['@'])
     print '1 %s %s' % (p.start, p.end)
 
 def _load_graph(gr_file, vocab):
@@ -70,7 +70,7 @@ def _parse_edge(gr_edge):
 
 def _find_shortest_paths(graph):
     parent, conj, selected = graph
-    for v_a, v_b in itertools.combinations(selected, 2):
+    for v_a, v_b in itertools.product(selected, selected):
         if _nl(v_a) == _nl(v_b):
             continue
 
