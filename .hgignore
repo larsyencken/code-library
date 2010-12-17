@@ -68,3 +68,5 @@ go/tokenizer/tokenize
 go/tokenizer/tokenize_vector
 go/tokenizer/tokenize_fast
 go/sieve/sieve
+c++/io-bench/read_lines_c
+c++/io-bench/read_lines_cpp

@@ -1,0 +1,4 @@
+
+env = Environment(CFLAGS='-O3 ', CXXFLAGS='-O3 ')
+env.Program('read_lines_c', 'read_lines_c.c')
+env.Program('read_lines_cpp', 'read_lines_cpp.cpp')
