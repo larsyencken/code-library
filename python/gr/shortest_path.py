@@ -5,7 +5,7 @@
 #  code
 #
 #  Created by Lars Yencken on 2010-11-19.
-#  Copyright 2010 NICTA. All rights reserved.
+#  Copyright 2010 Lars Yencken. All rights reserved.
 #
 
 """
@@ -23,36 +23,49 @@ Path = collections.namedtuple('Path', 'start end path')
 Edge = collections.namedtuple('Edge', 'label source')
 
 def shortest_path(vocab_file, gr_file):
-    vocab = set(l.rstrip() for l in open(vocab_file))
-    graph = _load_graph(gr_file, vocab)
-    for sp in _find_shortest_paths(graph):
-        if len(sp.path) <= 9:
-            _print_path(sp)
+    vocab = set(l.rstrip().split(' ', 1)[1] for l in open(vocab_file))
+    if gr_file == "-":
+        istream = sys.stdin
+    else:
+        istream = open(gr_file)
+    
+    for graph in _iter_graphs(istream, vocab):
+        for sp in _find_shortest_paths(graph):
+            if len(sp.path) <= 9:
+                _print_path(sp)
 
 def _print_path(p):
     print '1', ' '.join(['@'] + p.path + ['@'])
     print '1 %s %s' % (p.start, p.end)
 
-def _load_graph(gr_file, vocab):
+def _iter_graphs(istream, vocab):
+    inside = False
+
     parent = {}
     conj = {}
     selected = set()
-    for line in open(gr_file):
-        if not (line.startswith('(') and line.endswith(')\n')):
-            raise ValueError(line)
-        label, v_from, v_to = _parse_edge(line[1:-2])
+    for line in istream:
+        line = line.rstrip()
+        if line.startswith('(') and line.endswith(')'):
+            inside = True
+            label, v_from, v_to = _parse_edge(line[1:-2])
 
-        if v_to.rsplit('_')[0] in vocab:
-            selected.add(v_to)
+            if v_to.rsplit('_')[0] in vocab:
+                selected.add(v_to)
 
-        if label.startswith('conj'):
-            assert v_to not in conj
-            conj[v_to] = Edge(label, v_from)
-        else:
-            assert v_to not in parent
-            parent[v_to] = Edge(label, v_from)
+            if label.startswith('conj'):
+                assert v_to not in conj
+                conj[v_to] = Edge(label, v_from)
+            else:
+                assert v_to not in parent
+                parent[v_to] = Edge(label, v_from)
 
-    return Graph(parent, conj, selected)
+        elif inside:
+            yield Graph(parent, conj, selected)
+            inside = False
+            parent = {}
+            conj = {}
+            selected = set()
 
 def _parse_edge(gr_edge):
     parts = gr_edge.split()

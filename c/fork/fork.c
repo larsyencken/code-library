@@ -4,7 +4,7 @@
  *  code
  *
  *  Created by Lars Yencken on 2010-12-16.
- *  Copyright 2010 NICTA. All rights reserved.
+ *  Copyright 2010 Lars Yencken. All rights reserved.
  *
  */
 

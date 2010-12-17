@@ -21,6 +21,7 @@ dist
 mercury/*.{c,d,dep,err,c_date,dv,mh,mih,s_date}
 c/tokenize/tokenize
 c/gc/example_gc
+c/fork/fork
 c++/bool/boolTest
 c++/testMysql/main
 c++/typeSizes/typeSizes
