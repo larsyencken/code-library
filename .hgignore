@@ -52,6 +52,7 @@ haskell/wc/wc
 haskell/reverse/reverse
 haskell/cp/cp
 haskell/spell/spell
+haskell/file_sum/file_sum
 *.hi
 *.class
 *.jar
