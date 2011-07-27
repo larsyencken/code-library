@@ -72,3 +72,5 @@ go/sieve/sieve
 c++/io-bench/read_lines_c
 c++/io-bench/read_lines_cpp
 tmp
+scala/sbt-example/target
+scala/sbt-example/project/boot
