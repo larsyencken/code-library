@@ -41,6 +41,7 @@ c++/omp-lineareq/lineareq{,_mp}
 c++/pthread/example
 c++/tokenizer/tokenizer
 c++/stl-map/testMap
+c++/from_timestamp/from_timestamp
 objective-c/*/build
 javascript/dojo/dojoroot
 MANIFEST
