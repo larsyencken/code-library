@@ -1,9 +1,9 @@
 #!/usr/bin/env clj
-(comment
-  01-sum-numbers.clj
-
-  Sum all numbers from 1 to 1000 which are multiples of 3 or 5.
-  )
+;
+;  01-sum-numbers.clj
+;
+;  Sum all numbers from 1 to 1000 which are multiples of 3 or 5.
+;
 
 (defn sum [xs]
   (reduce + 0 xs))
