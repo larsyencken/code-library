@@ -8,15 +8,28 @@
 ;
 
 (ns euler
-  (:require clojure.contrib.combinatorics))
+  (:use clojure.contrib.combinatorics)
+  (:use clojure.test))
 
-(defn ispalindrome? [x]
+(defn is-palindrome? [x]
   (let [s (str x)]
     (= s (apply str (reverse s)))))
 
+(deftest is-palindrome-1
+         (is (is-palindrome? 101)))
+
+(deftest is-palindrome-2
+         (is true (is-palindrome? 20)))
+
+(deftest is-palindrome-3
+         (is true (is-palindrome? 403304)))
+
+(run-tests)
+
+(println)
 (println
+  "Answer:"
   (reduce max
-    (filter #(ispalindrome? %)
+    (filter #(is-palindrome? %)
             (map #(* (first %) (second %))
-                 (clojure.contrib.combinatorics/combinations 
-                   (range 100 1000) 2)))))
+                 (combinations (range 100 1000) 2)))))
