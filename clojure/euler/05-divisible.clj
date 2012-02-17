@@ -4,7 +4,7 @@
 ;  Code
 ;
 ;  Created by Lars Yencken on 2012-01-29.
-;  Copyright 2012 99designs. All rights reserved.
+;  Copyright 2012 Lars Yencken. All rights reserved.
 ;
 
 ; 2520 is the smallest number that can be divided by each of the numbers from

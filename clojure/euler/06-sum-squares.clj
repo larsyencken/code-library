@@ -4,7 +4,7 @@
 ;  Code
 ;
 ;  Created by Lars Yencken on 2012-02-17.
-;  Copyright 2012 99designs. All rights reserved.
+;  Copyright 2012 Lars Yencken. All rights reserved.
 ;
 
 (ns euler
