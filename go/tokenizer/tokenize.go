@@ -63,7 +63,11 @@ type RegexpTokenizer struct {
 }
 
 func (tr RegexpTokenizer) Tokenize(s string) <-chan string {
-    ch := tr.expr.AllMatchesStringIter(s, 0)
+    tokens := tr.expr.FindAllString(s, 0)
+    ch := make(chan string)
+    for _, t := range(tokens) {
+        ch <- t
+    }
     return ch
 }
 
