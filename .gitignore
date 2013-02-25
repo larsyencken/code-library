@@ -75,3 +75,5 @@ tmp
 scala/sbt-example/target
 scala/sbt-example/project/boot
 target
+chicken/hello/hello
+chicken/**/*.c
