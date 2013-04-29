@@ -2,7 +2,7 @@
 
 ## Runtime
 
-On OS X, install Chicken scheme with `brew install chicken`.
+On OS X, install Chicken scheme with `brew install chicken`. Install Racket with `brew install plt-racket`.
 
 ## Packages
 
