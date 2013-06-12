@@ -77,3 +77,4 @@ scala/sbt-example/project/boot
 target
 chicken/hello/hello
 chicken/**/*.c
+c++/opencv/camera
