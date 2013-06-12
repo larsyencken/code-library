@@ -18,8 +18,10 @@ int main() {
 		getchar();
 		return -1;
 	}
+
 	// Create a window in which the captured images will be presented
 	cvNamedWindow( "mywindow", CV_WINDOW_AUTOSIZE );
+
 	// Show the image captured from the camera in the window and repeat
 	while ( 1 ) {
 		// Get one frame
@@ -29,12 +31,14 @@ int main() {
 			getchar();
 			break;
 		}
+		cvFlip(frame, NULL, 1);
 		cvShowImage( "mywindow", frame );
 		// Do not release the frame!
 		//If ESC key pressed, Key=0x10001B under OpenCV 0.9.7(linux version),
 		//remove higher bits using AND operator
 		if ( (cvWaitKey(10) & 255) == 27 ) break;
 	}
+
 	// Release the capture device housekeeping
 	cvReleaseCapture( &capture );
 	cvDestroyWindow( "mywindow" );
