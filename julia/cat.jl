@@ -6,13 +6,13 @@
 if length(ARGS) > 0
     for filename in ARGS
         f = open(filename)
-        for l in each_line(f)
+        for l in eachline(f)
             write(STDOUT, l)
         end
         close(f)
     end
 else
-    for l in each_line(STDIN)
+    for l in eachline(STDIN)
         write(STDOUT, l)
     end
 end
