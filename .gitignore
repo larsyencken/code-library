@@ -78,3 +78,9 @@ target
 chicken/hello/hello
 chicken/**/*.c
 c++/opencv/camera
+go/gowiki/pages
+go/gowiki/wiki
+haskell/todo/todo
+haskell/todo/todo.txt
+haskell/cat/cat-string
+haskell/cat/cat-bytestring
