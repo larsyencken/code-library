@@ -84,3 +84,5 @@ haskell/todo/todo
 haskell/todo/todo.txt
 haskell/cat/cat-string
 haskell/cat/cat-bytestring
+haskell/cp/cp-strict
+haskell/cp/cp-lazy
