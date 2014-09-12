@@ -86,3 +86,4 @@ haskell/cat/cat-string
 haskell/cat/cat-bytestring
 haskell/cp/cp-strict
 haskell/cp/cp-lazy
+haskell/hello-web/hello-web
