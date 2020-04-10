@@ -1,0 +1,14 @@
+{
+  "name": "larslearnsnode",
+  "version": "1.0.0",
+  "description": "https://nodeschool.io/#workshoppers",
+  "main": "01-hello-world.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
