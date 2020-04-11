@@ -3,6 +3,8 @@
 // Listens to connections on a given port, then writes a 
 // formated datetime to the socket followed by a newline.
 
+'using strict'
+
 const net = require('net')
 const strftime = require('strftime')
 
