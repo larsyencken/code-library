@@ -88,3 +88,5 @@ haskell/cp/cp-strict
 haskell/cp/cp-lazy
 haskell/hello-web/hello-web
 node_modules
+pollen/**/compiled
+pollen/**/*~
